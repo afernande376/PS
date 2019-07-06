@@ -1,4 +1,8 @@
 
+Los documentos los he hecho en local utilizando un editor de Markdown en mi equipo sobre un repositorio sincronizado con Github. Al finalizar los documentos los actualizo mediante comandos git en mi equipo. Aquí está la lista de pasos que he seguido. 
+
+> Reflexión posterior: quizás sea mejor escribir la documentanción en la Wiki del repositorio, y meter el código en <>Code, en este caso, los scripts de powershell que genere?
+
 [Guía rápida MarkDown](https://rogerdudler.github.io/git-guide/index.es.html)
 
 Los pasos a seguir para subir documentos a GitHub es la siguiente:
