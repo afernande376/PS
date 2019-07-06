@@ -87,30 +87,52 @@ Como en el caso anterior, necesitaremos un servidor que disponga de un direcció
 	```
 	Add-DnsServerResourceRecordCname -Name "pepe" -HostNameAlias "pc1" -ZoneName "asir.com"
 	```
-12. Añadimos **registros tipo CNAME**:
+12. Añadimos **registros tipo MX**:
 	
 	```
+	Add-DnsServerResourceRecordMX -Name "." -Preference 10 -MailExchange "mail.asir.com" -ZoneName "asir.com"
 	```
 13. Añadimos **registros tipo NS**:
+> En primer lugar borramos el que se crea por defecto ya que su valor no es correcto:
+> 
+>
+>	```
+	Remove-DnsServerResourceRecord -Name "@" -RRType NS -ZoneName "asir.com" -Force
+>	```
+	
+	Y ahora añadimos el registro NS correspondiente a la zona asir.com con el nombre dnsserver.asir.com:
+	
+	```
+	Add-DnsServerResourceRecord -Name "@" -NameServer "dnsserver.asir.com" -NS -ZoneName "asir.com"
+	```
 
-	```
-	```
 14. Añadimos **registros tipo PTR**:
 	
 	```
+	Add-DnsServerResourceRecordPtr -Name "10" -ZoneName "0.0.10.in-addr.arpa" -PtrDomainName "pc1.asir.com"
 	```
-
-15. Comprobamos los registros que hemos añadido:
+/Users/AngelicaFernandez/CURSO1920-MHP/SRI1920/github/DNS/DNS.md
+15. **Comprobamos los registros** que hemos añadido en cada una de las zonas (directa e inversa):
 	
 	```
+	Get-DnsServerResourceRecord -ZoneName "asir.com"
+	Get-DnsServerResourceRecord -ZoneName "0.0.10.in-addr.arpa"
 	```
 16. Configuramos un **reenviador**:
 
-	``` html
-<font color="red"> command </font>
-```
 	```
+	Get-DnsServerResourceRecord -ZoneName "asir.com"
 	```
-17. wasdf
+
+#Información adicional 
+
+Puedes consultar más informacion sobre cada uno de los comandos en los docs de Microsoft. Aquí tienes los enlaces para los comandos que acabamos de utilizar:
+
+- [Add-DnsServerPrimaryZone](https://docs.microsoft.com/en-us/powershell/module/dnsserver/add-dnsserverprimaryzone?view=win10-ps)
+- [AddDnsServerResourceRecord](https://docs.microsoft.com/en-us/powershell/module/dnsserver/add-dnsserverresourcerecord?view=win10-ps)
+- [AddDnsServerForwarder](https://docs.microsoft.com/en-us/powershell/module/dnsserver/Add-DnsServerForwarder?view=win10-ps)
+- [Get-DnsServerResourceRecord](https://docs.microsoft.com/en-us/powershell/module/dnsserver/get-dnsserverresourcerecord?view=win10-ps)
+
+
 
 
