@@ -12,3 +12,4 @@
 8. Eliminar una reserva. 
 9. Realizar un script que permita añadir todos los datos introduciéndolos por teclado. 
 
+https://learn.microsoft.com/es-es/powershell/module/microsoft.powershell.utility/read-host?view=powershell-7.3
